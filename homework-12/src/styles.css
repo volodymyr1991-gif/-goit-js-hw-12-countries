@@ -8,4 +8,6 @@ html {
   box-sizing: inherit;
 }
 
-
+.countries__list-item{
+  list-style: none;
+}
