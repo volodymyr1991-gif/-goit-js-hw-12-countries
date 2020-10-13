@@ -19,15 +19,19 @@ refs.searchInput.addEventListener(
   debounce(function (event) {
     event.preventDefault();
     const inputValue = event.target.value;
-
+    console.log(inputValue.length);
     // fechArticles(inputValue).then(updateArticlesMarcup);
-    fechArticles(inputValue).then(updateListMarcup);
-    setTimeout(() => {
-      if (refs.list.childElementCount > 10) {
-        PNotify.alert('Запит потрібно зробити більш специфічним');
+    fechArticles(inputValue).then(res => {
+      if (res.length > 10) {
+        setTimeout(() => {
+          PNotify.alert('Запит потрібно зробити більш специфічним');
+        }, 600);
+      } else if (res.length >= 2 && res.length <= 10) {
+        updateListMarcup(res);
+      } else if ((res.length = 1)) {
+        updateArticlesMarcup(res);
       }
-      // console.log(refs.articles.childElementCount)
-    }, 600);
+    });
   }, 1000),
   refs.list.addEventListener('click', event => {
     event.preventDefault();
@@ -37,23 +41,6 @@ refs.searchInput.addEventListener(
     refs.searchInput.value = inputValu;
 
     fechArticles(inputValu).then(updateArticlesMarcup);
+    refs.searchInput.value = '';
   }),
 );
-
-// event => {
-//   event.preventDefault()
-//     const inputValue = event.currentTarget.value;
-
-//     fechArticles(inputValue).then(updateArticlesMarcup);
-//   }
-// let bebe = ()=>{
-
-//         // const inputValue = event.currentTarget.value;
-
-//         // refs.articles.innerHTML = '';
-
-//         // fechArticles(inputValue).then(updateArticlesMarcup);
-//       console.log('object');
-// }
-
-// bebe = debounce(bebe,500)

@@ -6,7 +6,7 @@ const refs = {
   };
 function updateArticlesMarcup(articles) {
     const marcup = articlesTpl(articles);
-
+    // if(articles.length >=2 && articles.length<=10)
     refs.articles.insertAdjacentHTML('beforeend', marcup);
 
   }

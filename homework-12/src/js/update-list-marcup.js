@@ -6,8 +6,11 @@ const refs = {
   };
 function updateListMarcup(articles) {
     const marcup = articlesTpl(articles);
-
-    refs.list.insertAdjacentHTML('beforeend', marcup);
+    
+// if(articles.length >=2 && articles.length<=10){
+  refs.list.insertAdjacentHTML('beforeend', marcup);
+// }
+    // refs.list.insertAdjacentHTML('beforeend', marcup);
 
   }
 export default updateListMarcup
