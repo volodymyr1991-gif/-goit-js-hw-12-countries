@@ -20,11 +20,13 @@ refs.searchInput.addEventListener(
     event.preventDefault();
     const inputValue = event.target.value;
     console.log(inputValue.length);
-    // fechArticles(inputValue).then(updateArticlesMarcup);
+
     fechArticles(inputValue).then(res => {
       if (res.length > 10) {
         setTimeout(() => {
-          PNotify.alert('Запит потрібно зробити більш специфічним');
+          PNotify.error({
+            text: 'Запит потрібно зробити більш специфічним.',
+          });
         }, 600);
       } else if (res.length >= 2 && res.length <= 10) {
         updateListMarcup(res);

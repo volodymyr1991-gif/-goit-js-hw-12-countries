@@ -1,15 +1,25 @@
 {{#each this}}
 <li class="countries__list-item">
-    <h2>{{name}}</h2>
-    <img src="{{flag}}" alt="{{name}}" width="320">
-    <p>Capital:{{capital}}</p>
-    <p>population:{{population}}</p>
-    {{#each languages}}
-    <ul>
-        <li>
-            {{ nativeName}}
-        </li>
-    </ul>
-    {{/each}}
+    <h1 class="title">{{name}}</h1>
+    <div class="countries__list-innerbox">
+
+        <div class="box-img">
+
+            <img src="{{flag}}" alt="{{name}}" width="450" height="">
+        </div>
+        <div class="box-text">
+            <h3 class="h3">Capital: {{capital}}</h3>
+            <h3>Population: {{population}}</h3>
+            <h3 class="text-languages">Languages:</h3>
+            {{#each languages}}
+
+            <ul>
+                <li>
+                    {{ nativeName}}
+                </li>
+            </ul>
+            {{/each}}
+        </div>
+    </div>
 </li>
 {{/each}}

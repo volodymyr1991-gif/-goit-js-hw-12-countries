@@ -1,16 +1,12 @@
-import articlesTpl from '../templates/art-list.hbs'
+import articlesTpl from '../templates/art-list.hbs';
 
 const refs = {
-    list: document.querySelector('.artlist-js'),
-  
-  };
+  list: document.querySelector('.artlist-js'),
+  articles: document.querySelector('.js-articles'),
+};
 function updateListMarcup(articles) {
-    const marcup = articlesTpl(articles);
-    
-// if(articles.length >=2 && articles.length<=10){
-  refs.list.insertAdjacentHTML('beforeend', marcup);
-// }
-    // refs.list.insertAdjacentHTML('beforeend', marcup);
+  const marcup = articlesTpl(articles);
 
-  }
-export default updateListMarcup
+  refs.list.insertAdjacentHTML('beforeend', marcup);
+}
+export default updateListMarcup;
