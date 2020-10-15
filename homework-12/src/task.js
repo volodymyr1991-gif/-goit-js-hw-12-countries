@@ -20,29 +20,32 @@ refs.searchInput.addEventListener(
     event.preventDefault();
     const inputValue = event.target.value;
     console.log(inputValue.length);
-
+    refs.articles.innerHTML = '';
     fechArticles(inputValue).then(res => {
       if (res.length > 10) {
         setTimeout(() => {
           PNotify.error({
             text: 'Запит потрібно зробити більш специфічним.',
+            delay: 1000,
           });
         }, 600);
       } else if (res.length >= 2 && res.length <= 10) {
         updateListMarcup(res);
       } else if ((res.length = 1)) {
         updateArticlesMarcup(res);
+
+        refs.searchInput.value = '';
       }
     });
-  }, 1000),
+  }, 600),
   refs.list.addEventListener('click', event => {
     event.preventDefault();
-    const inputValu = event.target.outerText;
+    const inputValues = event.target.outerText;
 
     refs.list.innerHTML = '';
-    refs.searchInput.value = inputValu;
+    refs.searchInput.value = inputValues;
 
-    fechArticles(inputValu).then(updateArticlesMarcup);
+    fechArticles(inputValues).then(updateArticlesMarcup);
     refs.searchInput.value = '';
   }),
 );
