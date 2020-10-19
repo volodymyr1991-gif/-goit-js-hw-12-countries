@@ -19,8 +19,8 @@ refs.searchInput.addEventListener(
   debounce(function (event) {
     event.preventDefault();
     const inputValue = event.target.value;
-    // console.log(inputValue.length);
 
+    refs.list.innerHTML = '';
     refs.articles.innerHTML = '';
     fechArticles(inputValue).then(res => {
       if (res.length > 10) {
