@@ -19,22 +19,22 @@ refs.searchInput.addEventListener(
   debounce(function (event) {
     event.preventDefault();
     const inputValue = event.target.value;
-    console.log(inputValue.length);
+    // console.log(inputValue.length);
+
     refs.articles.innerHTML = '';
     fechArticles(inputValue).then(res => {
       if (res.length > 10) {
         setTimeout(() => {
           PNotify.error({
             text: 'Запит потрібно зробити більш специфічним.',
-            delay: 1000,
+            delay: 2000,
           });
         }, 600);
       } else if (res.length >= 2 && res.length <= 10) {
         updateListMarcup(res);
       } else if ((res.length = 1)) {
         updateArticlesMarcup(res);
-
-        refs.searchInput.value = '';
+        refs.list.innerHTML = '';
       }
     });
   }, 600),
@@ -46,6 +46,5 @@ refs.searchInput.addEventListener(
     refs.searchInput.value = inputValues;
 
     fechArticles(inputValues).then(updateArticlesMarcup);
-    refs.searchInput.value = '';
   }),
 );

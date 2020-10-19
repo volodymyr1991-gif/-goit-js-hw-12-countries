@@ -7,6 +7,6 @@ const refs = {
 function updateListMarcup(articles) {
   const marcup = articlesTpl(articles);
 
-  refs.list.insertAdjacentHTML('beforeend', marcup);
+  refs.list.innerHTML = marcup;
 }
 export default updateListMarcup;
